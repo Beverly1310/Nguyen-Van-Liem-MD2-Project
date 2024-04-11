@@ -1,7 +1,7 @@
 package business.design;
 
-public interface UIDesign<E> {
-    E findById();
+public interface UIDesign<T> {
+    T findById();
 
     void createData();
 
