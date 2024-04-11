@@ -49,7 +49,7 @@ public class Favorite implements Serializable, DisplayData {
     public void setMovieId(List<Integer> movieId) {
         this.movieId = movieId;
     }
-
+    @Override
     public void displayData() {
         System.out.printf("ID: %-5d || ID người dung: %-5d", this.favoriteId, this.userId);
         System.out.println("Danh sách phim yêu thích");

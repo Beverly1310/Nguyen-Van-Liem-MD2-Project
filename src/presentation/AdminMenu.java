@@ -13,8 +13,8 @@ import business.implement.MovieImplement;
 import business.implement.UserImplement;
 
 public class AdminMenu {
-    private static UserDesign useManager = new UserImplement();
-    private static MovieDesign<Movies> movieManager = new MovieImplement();
+    public static UserDesign userManager = new UserImplement();
+    public static MovieDesign<Movies> movieManager = new MovieImplement();
     private static CategoryDesign<Category> categoryManager = new CategoryImplement();
 
     public static void Menu() {
@@ -59,25 +59,25 @@ public class AdminMenu {
         boolean isStop = false;
         while (!isStop) {
             System.out.println("---------------------------Quản lý User---------------------------");
-            System.out.println("\u001B[33m|1. Hiển thị danh sách user\u001B[0m");
+            System.out.println("\u001B[33m1. Hiển thị danh sách user\u001B[0m");
             System.out.println("\u001B[34m2. Thêm mới user\u001B[0m");
-            System.out.println("\u001B[35m|3. Tìm kiếm user\u001B[0m");
+            System.out.println("\u001B[35m3. Tìm kiếm user\u001B[0m");
             System.out.println("\u001B[36m4. Đổi trạng thái user\u001B[0m");
             System.out.println("5. Quay lại\u001B[0m");
             System.out.println(Alert.PLEASE_CHOSE);
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    useManager.displayAll();
+                    userManager.displayAll();
                     break;
                 case 2:
-                    useManager.createUser();
+                    userManager.createUser();
                     break;
                 case 3:
-                    useManager.searchUser();
+                    userManager.searchUser();
                     break;
                 case 4:
-                    useManager.changeStatusUser();
+                    userManager.changeStatusUser();
                     break;
                 case 5:
                     isStop = true;
@@ -93,9 +93,9 @@ public class AdminMenu {
         boolean isStop = false;
         while (!isStop) {
             System.out.println("------------------------Quản lý danh mục--------------------------");
-            System.out.println("\u001B[33m|1. Hiển thị danh sách danh mục\u001B[0m");
+            System.out.println("\u001B[33m1. Hiển thị danh sách danh mục\u001B[0m");
             System.out.println("\u001B[34m2. Thêm danh mục\u001B[0m");
-            System.out.println("\u001B[35m|3. Sửa danh mục\u001B[0m");
+            System.out.println("\u001B[35m3. Sửa danh mục\u001B[0m");
             System.out.println("\u001B[36m4. Xóa danh mục\u001B[0m");
             System.out.println("\u001B[33m5. Tìm kiếm danh mục\u001B[0m");
             System.out.println("6. Quay lại\u001B[0m");
@@ -131,9 +131,9 @@ public class AdminMenu {
         boolean isStop = false;
         while (!isStop) {
             System.out.println("--------------------------Quản lý phim----------------------------");
-            System.out.println("\u001B[33m|1. Hiển thị danh sách phim\u001B[0m");
+            System.out.println("\u001B[33m1. Hiển thị danh sách phim\u001B[0m");
             System.out.println("\u001B[34m2. Thêm mới phim\u001B[0m");
-            System.out.println("\u001B[35m|3. Sửa thông tin phim\u001B[0m");
+            System.out.println("\u001B[35m3. Sửa thông tin phim\u001B[0m");
             System.out.println("\u001B[36m4. Xóa phim\u001B[0m");
             System.out.println("\u001B[33m5. Sắp xếp phim theo tên\u001B[0m");
             System.out.println("\u001B[34m6. Tìm kiếm phim theo tên\u001B[0m");
@@ -173,9 +173,9 @@ public class AdminMenu {
         boolean isStop = false;
         while (!isStop) {
             System.out.println("--------------------------Thống kê---------------------------------");
-            System.out.println("\u001B[33m|1. Thống kê top 10 phim có lượt xem cao nhất trong tháng\u001B[0m");
+            System.out.println("\u001B[33m1. Thống kê top 10 phim có lượt xem cao nhất trong tháng\u001B[0m");
             System.out.println("\u001B[34m2. Thống kê số lượng phim mới, người dùng mới trong tháng\u001B[0m");
-            System.out.println("\u001B[35m|3. Xem đánh giá\u001B[0m");
+            System.out.println("\u001B[35m3. Xem đánh giá\u001B[0m");
             System.out.println("4. Quay lại\u001B[0m");
             System.out.println(Alert.PLEASE_CHOSE);
             byte choice = InputMethods.getByte();
@@ -184,10 +184,10 @@ public class AdminMenu {
                     movieManager.getTop10View();
                     break;
                 case 2:
-                    useManager.getNewMovieAndNewUserInMonth();
+                    userManager.getNewMovieAndNewUserInMonth();
                     break;
                 case 3:
-                    useManager.checkRate();
+                    userManager.checkRate();
                     break;
                 case 4:
                     isStop = true;

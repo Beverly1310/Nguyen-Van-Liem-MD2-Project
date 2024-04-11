@@ -8,9 +8,10 @@ import business.design.UserDesign;
 import business.implement.MovieImplement;
 import business.implement.UserImplement;
 
+import static presentation.AdminMenu.movieManager;
+import static presentation.AdminMenu.userManager;
+
 public class UserMenu {
-    private static   MovieDesign myMovie = new MovieImplement();
-    private static   UserDesign myAccount = new UserImplement();
     public static void Menu() {
         boolean isExit = false;
         System.out.println("Chào mừng trở lại,"+Login.user.getUserName()+"（づ￣3￣）づ╭❤️～");
@@ -62,23 +63,23 @@ public class UserMenu {
             System.out.println("----------------------------Trang chủ--------------------------");
             System.out.println("\u001B[33m1. Tìm kiếm phim\u001B[0m");
             System.out.println("\u001B[34m2. Hiển thị tất cả phim hiện có\u001B[0m");
-            System.out.println("\u001B[35m|3. Hiển thị danh sách phim mới\u001B[0m");
+            System.out.println("\u001B[35m3. Hiển thị danh sách phim mới\u001B[0m");
             System.out.println("\u001B[36m4. Hiển thị danh sách phim nổi bật\u001B[0m");
             System.out.println("5. Quay lại");
             System.out.println(Alert.PLEASE_CHOSE);
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myMovie.searchByName();
+                    movieManager.searchByName();
                     break;
                 case 2:
-                    myMovie.displayAll();
+                    movieManager.displayAll();
                     break;
                 case 3:
-                    myMovie.displayNewestMovie();
+                    movieManager.displayNewestMovie();
                     break;
                 case 4:
-                    myMovie.displayMostFamoustMovie();
+                    movieManager.displayMostFamoustMovie();
                     break;
                 case 5:
                     isStop=true;
@@ -101,13 +102,13 @@ public class UserMenu {
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myMovie.displayListMovie();
+                    movieManager.displayListMovie();
                     break;
                 case 2:
-                    myMovie.displayMovieByCategory();
+                    movieManager.displayMovieByCategory();
                     break;
                 case 3:
-                    myMovie.sortMovieByName();
+                    movieManager.sortMovieByName();
                     break;
                 case 4:
                     isStop=true;
@@ -129,10 +130,10 @@ public class UserMenu {
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myMovie.displayMovie();
+                    movieManager.displayMovie();
                     break;
                 case 2:
-                    myMovie.watchMovie();
+                    movieManager.watchMovie();
                     break;
                 case 3:
                     isStop=true;
@@ -154,10 +155,10 @@ public class UserMenu {
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myAccount.displayFavoriteList();
+                    userManager.displayFavoriteList();
                     break;
                 case 2:
-                    myAccount.removeFromFavoriteList();
+                    userManager.removeFromFavoriteList();
                     break;
                 case 3:
                     isStop=true;
@@ -174,23 +175,23 @@ public class UserMenu {
             System.out.println("--------------------------Thông tin cá nhân--------------------------");
             System.out.println("\u001B[33m1. Hiển thị thông tin cá nhân\u001B[0m");
             System.out.println("\u001B[34m2. Đổi mật khẩu\u001B[0m");
-            System.out.println("\u001B[35m|3. Chỉnh sửa thông tin cá nhân\u001B[0m");
+            System.out.println("\u001B[35m3. Chỉnh sửa thông tin cá nhân\u001B[0m");
             System.out.println("\u001B[36m4. Xóa tài khoản\u001B[0m");
             System.out.println("5. Quay lại");
             System.out.println(Alert.PLEASE_CHOSE);
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myAccount.displayInformation();
+                    userManager.displayInformation();
                     break;
                 case 2:
-                    myAccount.changePassword();
+                    userManager.changePassword();
                     break;
                 case 3:
-                    myAccount.updateInformation();
+                    userManager.updateInformation();
                     break;
                 case 4:
-                    myAccount.deleteAccount();
+                    userManager.deleteAccount();
                     Login.user=null;
                     IOFile.updateUserLogin(Login.user);
                     return true;
@@ -214,7 +215,7 @@ public class UserMenu {
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    myAccount.readHistory();
+                    userManager.readHistory();
                     break;
                 case 2:
                     isStop=true;

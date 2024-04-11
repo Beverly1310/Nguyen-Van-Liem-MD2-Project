@@ -97,7 +97,7 @@ public class Category implements Serializable, DisplayData {
         System.out.println("Nhập trạng thái:");
         this.status = InputMethods.getBoolean();
     }
-
+    @Override
     public void displayData() {
         System.out.printf("ID: %-5d || Tên danh mục: %-10s\n", this.categoryId, this.categoryName);
         System.out.printf("Mô tả: %-15s\n", this.description);

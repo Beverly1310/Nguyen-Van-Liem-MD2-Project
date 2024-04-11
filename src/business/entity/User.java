@@ -228,7 +228,7 @@ public class User implements Serializable, DisplayData {
         int max = userList.stream().map(User::getUserId).max(Comparator.naturalOrder()).orElse(0);
         return max + 1;
     }
-
+    @Override
     public void displayData() {
         System.out.printf("Mã ID: %-5d || Họ và tện: %-10s || Email: %-10s\n", this.userId, this.fullName, this.email);
         System.out.printf("Trạng thái: %-5s || Vai trò: %-5s\n", this.status ? "Hoạt động" : "Khóa", this.role ? "Admin" : "User");

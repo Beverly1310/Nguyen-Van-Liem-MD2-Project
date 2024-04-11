@@ -172,9 +172,9 @@ public class Movies implements Serializable, DisplayData {
         System.out.println("Nhập url hình ảnh:");
         this.imageUrl = InputMethods.getString();
     }
-
+    @Override
     public void displayData() {
-        System.out.printf("ID: %-5d || Tên phim: %-10s\n", this.movieId, this.movieName);
+        System.out.printf("ID: %-5d || Tên phim: %-10s || Lượt xem: %-5d\n", this.movieId, this.movieName,this.view);
         System.out.printf("Mô tả: %-15s\n", this.description);
         System.out.printf("Video Url: %-15s\n", this.videoUrl);
         System.out.printf("Image Url: %-15s\n", this.imageUrl);

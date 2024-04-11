@@ -73,7 +73,7 @@ public class History implements Serializable, DisplayData {
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
-
+    @Override
     public void displayData() {
         System.out.printf("ID: %-5d || ID người dùng: %-5d\n", this.historyId, this.userId);
         System.out.println("Các phim đã xem:");
