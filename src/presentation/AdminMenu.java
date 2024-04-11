@@ -54,7 +54,7 @@ public class AdminMenu {
             }
         }
     }
-
+// trang quản lý tài khoản
     private static void manageUser() {
         boolean isStop = false;
         while (!isStop) {
@@ -88,7 +88,7 @@ public class AdminMenu {
             }
         }
     }
-
+// trang quản lý danh mục
     private static void manageCategory() {
         boolean isStop = false;
         while (!isStop) {
@@ -126,7 +126,7 @@ public class AdminMenu {
             }
         }
     }
-
+// trang quản lý phim
     private static void manageMovie() {
         boolean isStop = false;
         while (!isStop) {
@@ -168,7 +168,7 @@ public class AdminMenu {
             }
         }
     }
-
+//trang thống kê
     private static void manageStatistics() {
         boolean isStop = false;
         while (!isStop) {

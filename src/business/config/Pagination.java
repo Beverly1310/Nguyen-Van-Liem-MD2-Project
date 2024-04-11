@@ -6,17 +6,20 @@ import java.util.List;
 
 public class Pagination {
     public static <E extends DisplayData> void paginate(List<E> list, String alertIfNull) {
-        int firstIndexOfPage = 0;
-        int lastIndexOfPage = 1;
-        int elementPerPage = 2;
-        int page = 1;
-        int numberOfPage;
-        if (list.size() % elementPerPage == 0) {// nếu sô ptu chia cho số ptu mỗi trang không dư
+        int firstIndexOfPage = 0;// chỉ số đầu của trang
+        int lastIndexOfPage = 1;// chỉ số cuối của trang
+        int elementPerPage = 2;// số ptu của trang
+        int page = 1;// trang hiện tại
+        int numberOfPage;// số trang
+        if (list.size() % elementPerPage == 0) {// nếu tổ số ptu chia cho số ptu mỗi trang không dư
             numberOfPage = list.size() / elementPerPage;// sô trang = số ptu/ số ptu mỗi trang
         } else {
             numberOfPage = list.size() / elementPerPage + 1;// sô trang = số ptu/ số ptu mỗi trang +1
         }
-
+          if (list.isEmpty()){
+              numberOfPage=1;
+        }
+          // in ra các phtu
         do {
             for (int i = 0; i < list.size(); i++) {
                 if (i >= firstIndexOfPage && i <= lastIndexOfPage) {
@@ -27,7 +30,7 @@ public class Pagination {
                     }
                 }
             }
-
+// in nút điều hướng
             System.out.println("Trang : " + page + "/" + numberOfPage);
             if (page == 1) {
                 System.out.println("2.Trang sau");
@@ -41,6 +44,7 @@ public class Pagination {
             }
             System.out.println("Mời nhập lựa chọn: ");
             int choice = InputMethods.getInteger();
+            // chọn nút điều hướng
             switch (choice) {
                 case 1:
                     if (page  <= numberOfPage && page -1 > 0) {

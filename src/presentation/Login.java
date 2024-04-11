@@ -12,7 +12,8 @@ import java.io.File;
 public class Login {
     private static IAuthentication iAuthentication = new AuthenticationImplement();
     public static User user = null;
-// tự động đăng nhập
+
+    // tự động đăng nhập
     static {
         File loginStatus = new File(IOFile.LOGIN_STATUS_PATH);
         // nếu có một đối tượng user đã đăng nhập từ trước thì gắn user đó vào biến user
@@ -20,7 +21,7 @@ public class Login {
             user = IOFile.getUserLogin();
         }
         // tự động đăng nhập nếu user khác null
-        if (user!=null){
+        if (user != null) {
             {
                 if (user.isRole()) {
                     AdminMenu.Menu();
@@ -30,7 +31,8 @@ public class Login {
             }
         }
     }
-// trang chủ
+
+    // trang chủ
     public static void main(String[] args) {
         boolean isExit = false;
         while (!isExit) {
@@ -42,7 +44,7 @@ public class Login {
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                        login();
+                    login();
                     break;
                 case 2:
                     register();
@@ -56,13 +58,14 @@ public class Login {
             }
         }
     }
-
+// đăng nhập
     private static void login() {
         System.out.println("=================ĐĂNG NHẬP=================");
         System.out.println("Nhập Username:");
         String username = InputMethods.getString();
         System.out.println("Nhập Password:");
         String password = InputMethods.getString();
+        // kiểm tra tài khoản nhập vào
         User userLogin = iAuthentication.login(username, password);
         if (userLogin == null) {
             System.out.println("\u001B[31mThông tin đăng nhập không chính xác.\u001B[0m");
@@ -100,7 +103,7 @@ public class Login {
             }
         }
     }
-
+// đăng kí
     private static void register() {
         System.out.println("=================ĐĂNG KÝ=================");
         User user = new User();

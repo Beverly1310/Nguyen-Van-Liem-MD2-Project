@@ -27,7 +27,7 @@ public class CategoryImplement implements CategoryDesign<Category> {
             categoryList = IOFile.getFile(IOFile.CATEGORY_PATH);
         }
     }
-
+// tìm category theo id
     @Override
     public void searchCategory() {
         Category category = findById();
@@ -37,14 +37,14 @@ public class CategoryImplement implements CategoryDesign<Category> {
             System.out.println(Alert.CATEGORY_NOTFOUND);
         }
     }
-
+// trả về đối tượng category thông qua id
     @Override
     public Category findById() {
         System.out.println("Nhập ID danh mục cần tìm:");
         int categoryId = InputMethods.getInteger();
         return categoryList.stream().filter(category -> category.getCategoryId() == categoryId).findFirst().orElse(null);
     }
-
+// thêm mới category
     @Override
     public void createData() {
         System.out.println("Nhập số lượng danh mục muốn thêm");
@@ -57,7 +57,7 @@ public class CategoryImplement implements CategoryDesign<Category> {
             IOFile.updateFile(IOFile.CATEGORY_PATH, categoryList);
         }
     }
-
+// hiển thị danh sách category
     @Override
     public void displayAll() {
         if (categoryList.isEmpty()){
@@ -66,7 +66,7 @@ public class CategoryImplement implements CategoryDesign<Category> {
             Pagination.paginate(categoryList,Alert.CATEGORY_NOTFOUND);
         }
     }
-
+// cập nhật category
     @Override
     public void updateData() {
         Category category = findById();
@@ -106,7 +106,7 @@ public class CategoryImplement implements CategoryDesign<Category> {
         }
         IOFile.updateFile(IOFile.CATEGORY_PATH, categoryList);
     }
-
+//xóa category
     @Override
     public void deleteData() {
         Category category = findById();

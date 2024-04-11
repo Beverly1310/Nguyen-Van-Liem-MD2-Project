@@ -24,11 +24,13 @@ import static business.implement.RateImplement.rateList;
 
 public class UserImplement implements UserDesign {
     ////////////////////////////////////ADMIN///////////////////////////////////////////////
+    // hiển thị danh sách tài khoản
     @Override
     public void displayAll() {
         Pagination.paginate(userList, Alert.USER_NOTFOUND);
     }
 
+    //tạo mới người dùng
     @Override
     public void createUser() {
         System.out.println("Nhập số lượng người dùng muốn thêm");
@@ -42,7 +44,7 @@ public class UserImplement implements UserDesign {
             IOFile.updateFile(IOFile.USER_PATH, userList);
         }
     }
-
+// tìm kiếm người dùng
     @Override
     public void searchUser() {
         User findUser = findUserById();
@@ -52,13 +54,13 @@ public class UserImplement implements UserDesign {
             System.out.println(Alert.USER_NOTFOUND);
         }
     }
-
+// tìm người dùng bằng Id
     private static User findUserById() {
         System.out.println("Nhập ID người dùng cần tìm:");
         int userId = InputMethods.getInteger();
         return userList.stream().filter(user -> user.getUserId() == userId).findFirst().orElse(null);
     }
-
+// thay đổi thông tin người dùng
     @Override
     public void changeStatusUser() {
         User user = findUserById();
@@ -71,7 +73,7 @@ public class UserImplement implements UserDesign {
         }
         IOFile.updateFile(IOFile.USER_PATH, userList);
     }
-
+// thống kê số lượng người dùng mới và user mới trong tháng
     @Override
     public void getNewMovieAndNewUserInMonth() {
         System.out.println("Chọn tháng muốn lấy thống kê");
@@ -81,7 +83,7 @@ public class UserImplement implements UserDesign {
         System.out.println("Số lượng phim mới trong tháng " + month + " là: " + countMovie);
         System.out.println("Số lượng người dung mới trong tháng " + month + " là: " + countUser);
     }
-
+// thống kê đánh giá
     public void checkRate() {
         double averageRate = (double) rateList.stream().map(Rate::getRate).reduce(0, Integer::sum) / rateList.size();
         String direction = null;
@@ -92,14 +94,16 @@ public class UserImplement implements UserDesign {
         } else if (averageRate >= 4 && averageRate <= 5) {
             direction = "Tích cực ( •̀ ω •́ )✧";
         }
-        System.out.printf("Chiều hướng đánh giá: %-8s || Điểm đánh giá trung bình: %-5.2f\n",direction,averageRate);
+        System.out.printf("Chiều hướng đánh giá: %-8s || Điểm đánh giá trung bình: %-5.2f\n", direction, averageRate);
         System.out.println("Các đánh giá hiện tại");
         Pagination.paginate(rateList, "Đánh giá này không tồn tại");
     }
 
     /////////////////////////////////////USER///////////////////////////////////////////////
+    // hiển thị dah sách yêu thích
     @Override
     public void displayFavoriteList() {
+        // lấy ra list yêu thích của người dùng đang đăng nhập
         Favorite myFavorite = favoriteList.stream().filter(favorite -> favorite.getUserId() == Login.user.getUserId()).findFirst().orElse(null);
         if (myFavorite != null) {
             myFavorite.displayData();
@@ -107,29 +111,32 @@ public class UserImplement implements UserDesign {
             System.out.println("\u001B[31mDanh sách yêu thích của bạn trống, hãy thêm phim yêu thích của mình trước\u001B[0m");
         }
     }
-
+// xóa khỏi danh sách yêu thích
     @Override
     public void removeFromFavoriteList() {
+        // lấy ra list yêu thích của người dùng đang đăng nhập
         Favorite myFavorite = favoriteList.stream().filter(favorite -> favorite.getUserId() == Login.user.getUserId()).findFirst().orElse(null);
         if (myFavorite != null) {
             System.out.println("Nhập ID phim muốn xóa khỏi danh sách yêu thích");
             int movieId = InputMethods.getInteger();
-            List<Integer> listMovieID = myFavorite.getMovieId();
-            if (listMovieID.stream().anyMatch(myMovie -> myMovie == movieId)) {
+            List<Integer> listMovieID = myFavorite.getMovieId();// lấy ra list yêu thích của tài khoản
+            if (listMovieID.stream().anyMatch(myMovie -> myMovie == movieId)) { // nếu tìm thấy thì xóa khỏi danh sách
                 listMovieID.remove((Integer) movieId);
                 myFavorite.setMovieId(listMovieID);
+            } else {
+                System.out.println(Alert.MOVIE_NOTFOUND);
             }
         } else {
             System.out.println("\u001B[31mDanh sách yêu thích của bạn trống Σ(っ °Д °;)っ\u001B[0m");
         }
         IOFile.updateFile(IOFile.FAVORITE_PATH, favoriteList);
     }
-
+//hiển thị thông tin người dùng đang đăng nhập
     @Override
     public void displayInformation() {
         Login.user.displayData();
     }
-
+// thay đổi mật khẩu
     @Override
     public void changePassword() {
         User user = Login.user;
@@ -139,7 +146,6 @@ public class UserImplement implements UserDesign {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.inputPassword();
                 user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(5)));
-//                userList.set(userList.indexOf(user),user );
                 break;
             } else {
                 System.out.println(Alert.WRONG_PASSWORD);
@@ -148,7 +154,7 @@ public class UserImplement implements UserDesign {
         Login.user.setUpdatedAt(LocalDateTime.now());
         IOFile.updateFile(IOFile.USER_PATH, userList);
     }
-
+// thay đổi thông tin tài khoản
     @Override
     public void updateInformation() {
         User user = Login.user;
@@ -200,9 +206,10 @@ public class UserImplement implements UserDesign {
         System.out.println(Alert.COMPLETE_CHANGE);
     }
 
-
+// xem lịch sử phim
     @Override
     public void readHistory() {
+        // lấy ra list lịch sử của tk đang đăng nhập
         History myHistory = historyList.stream().filter(history -> history.getUserId() == Login.user.getUserId()).findFirst().orElse(null);
         if (myHistory != null) {
             myHistory.displayData();
@@ -210,6 +217,7 @@ public class UserImplement implements UserDesign {
             System.out.println("\u001B[31mLịch sử xem phim của bạn trống 🤡\u001B[0m");
         }
     }
+//xóa tài khoản
     @Override
     public void deleteAccount() {
         System.out.println("Nhập mật khẩu hiện tại");

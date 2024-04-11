@@ -70,7 +70,7 @@ public class IOFile {
             }
         }
     }
-    // đọc dữ liệu trong file
+    // lấy ra người dùng đang đăng nhập
     public static User getUserLogin() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
@@ -100,7 +100,7 @@ public class IOFile {
         return user;
     }
 
-    //ghi lại dữ liệu mới vào file
+    //cập nhật lại người dùng đang đăng nhập
     public static void updateUserLogin(User user) {
         File newFile = new File(IOFile.LOGIN_STATUS_PATH);
         FileOutputStream fos = null;
