@@ -17,11 +17,15 @@ public interface UserDesign {
 
     void changePassword();
 
-    void updateInformation();
+    boolean updateInformation();
 
     void getNewMovieAndNewUserInMonth();
 
     void readHistory();
+
     void checkRate();
+
     void deleteAccount();
+
+    void lockAccount();
 }

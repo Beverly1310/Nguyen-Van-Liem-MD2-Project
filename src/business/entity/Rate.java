@@ -63,9 +63,10 @@ public class Rate implements Serializable,  DisplayData {
     }
     @Override
     public void displayData() {
+        System.out.println("--------------------------------------------------------------------------");
         System.out.printf("ID: %-5s || ID người dung: %-5s || ID phim: %-5s\n", this.rateId, this.userId, this.movieId);
         System.out.printf("Số điểm: %-5s\n", this.rate);
         System.out.printf("Bình luận: %-15s\n", this.comment);
-        System.out.println("-----------------------------");
+        System.out.println("--------------------------------------------------------------------------");
     }
 }

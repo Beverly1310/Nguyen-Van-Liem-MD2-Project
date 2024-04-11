@@ -80,8 +80,15 @@ public class UserImplement implements UserDesign {
         byte month = InputMethods.getByte();
         int countMovie = (int) moviesList.stream().filter(movies -> movies.getCreatedDate().getMonthValue() == month).count();
         int countUser = (int) userList.stream().filter(user -> user.getCreatedAt().getMonthValue() == month).count();
-        System.out.println("Số lượng phim mới trong tháng " + month + " là: " + countMovie);
-        System.out.println("Số lượng người dung mới trong tháng " + month + " là: " + countUser);
+        int countMovieMonthBefore = (int) moviesList.stream().filter(movies -> movies.getCreatedDate().getMonthValue() == (month-1)).count();
+        int countUserMonthBefore = (int) userList.stream().filter(user -> user.getCreatedAt().getMonthValue() == (month-1)).count();
+        int movieDiff = countMovie - countMovieMonthBefore;
+        int userDiff = countUser - countUserMonthBefore;
+        System.out.printf("Số lượng phim mới trong tháng %d là: %-15d || Thay đổi: %d so với tháng trước\n",
+                month,countMovie,movieDiff);
+        System.out.printf("Số lượng người dùng mới mới trong tháng %d là: %-5d || Thay đổi: %d so với tháng trước\n",
+                month,countUser,userDiff);
+//
     }
 // thống kê đánh giá
     public void checkRate() {
@@ -146,6 +153,7 @@ public class UserImplement implements UserDesign {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.inputPassword();
                 user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(5)));
+                System.out.println(Alert.COMPLETE_CHANGE);
                 break;
             } else {
                 System.out.println(Alert.WRONG_PASSWORD);
@@ -156,7 +164,7 @@ public class UserImplement implements UserDesign {
     }
 // thay đổi thông tin tài khoản
     @Override
-    public void updateInformation() {
+    public boolean updateInformation() {
         User user = Login.user;
         boolean isExit = false;
         while (!isExit) {
@@ -185,12 +193,12 @@ public class UserImplement implements UserDesign {
                         if (BCrypt.checkpw(password, user.getPassword())) {
                             user.inputPassword();
                             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(5)));
-                            break;
+                            System.out.println(Alert.COMPLETE_CHANGE);
+                            return true;
                         } else {
                             System.out.println(Alert.WRONG_PASSWORD);
                         }
                     }
-                    break;
                 case 4:
                     System.out.println("Avatar cũ: " + user.getAvatar());
                     user.inputAvatar();
@@ -204,6 +212,7 @@ public class UserImplement implements UserDesign {
         }
         IOFile.updateFile(IOFile.USER_PATH, userList);
         System.out.println(Alert.COMPLETE_CHANGE);
+        return false;
     }
 
 // xem lịch sử phim
@@ -229,5 +238,9 @@ public class UserImplement implements UserDesign {
         } else {
             System.out.println(Alert.WRONG_PASSWORD);
         }
+    }
+    @Override
+    public void lockAccount(){
+        Login.user.setStatus(false);
     }
 }

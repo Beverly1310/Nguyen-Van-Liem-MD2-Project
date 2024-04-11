@@ -174,12 +174,13 @@ public class Movies implements Serializable, DisplayData {
     }
     @Override
     public void displayData() {
+        System.out.println("--------------------------------------------------------------------------");
         System.out.printf("ID: %-5d || Tên phim: %-10s || Lượt xem: %-5d\n", this.movieId, this.movieName,this.view);
         System.out.printf("Mô tả: %-15s\n", this.description);
         System.out.printf("Video Url: %-15s\n", this.videoUrl);
         System.out.printf("Image Url: %-15s\n", this.imageUrl);
         System.out.printf("Ngày tạo: %-10s || Cập nhật gần nhất: %-10s\n", this.createdDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
                 this.updateDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
     }
 }

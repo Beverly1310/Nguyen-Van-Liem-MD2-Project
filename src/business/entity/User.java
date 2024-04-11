@@ -230,11 +230,12 @@ public class User implements Serializable, DisplayData {
     }
     @Override
     public void displayData() {
+        System.out.println("--------------------------------------------------------------------------");
         System.out.printf("Mã ID: %-5d || Họ và tện: %-10s || Email: %-10s\n", this.userId, this.fullName, this.email);
         System.out.printf("Trạng thái: %-5s || Vai trò: %-5s\n", this.status ? "Hoạt động" : "Khóa", this.role ? "Admin" : "User");
         System.out.printf("Avatar: %-15s\n", this.avatar.equals("") ? "n/a" : this.avatar);
         System.out.printf("Ngày tạo: %-10s || Cập nhật gần nhất: %-10s\n", this.createdAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
                 this.updatedAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
     }
 }

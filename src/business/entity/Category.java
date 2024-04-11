@@ -99,9 +99,10 @@ public class Category implements Serializable, DisplayData {
     }
     @Override
     public void displayData() {
+        System.out.println("--------------------------------------------------------------------------");
         System.out.printf("ID: %-5d || Tên danh mục: %-10s\n", this.categoryId, this.categoryName);
         System.out.printf("Mô tả: %-15s\n", this.description);
         System.out.printf("Trạng thái: %-5s\n", this.status ? "Hoạt động" : "Không hoạt động");
-        System.out.println("--------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
     }
 }
