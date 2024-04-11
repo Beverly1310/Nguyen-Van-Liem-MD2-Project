@@ -92,7 +92,7 @@ public class UserImplement implements UserDesign {
         } else if (averageRate >= 4 && averageRate <= 5) {
             direction = "Tích cực ( •̀ ω •́ )✧";
         }
-        System.out.println("Chiều hướng đánh giá: " + direction);
+        System.out.printf("Chiều hướng đánh giá: %-8s || Điểm đánh giá trung bình: %-5.2f\n",direction,averageRate);
         System.out.println("Các đánh giá hiện tại");
         Pagination.paginate(rateList, "Đánh giá này không tồn tại");
     }
