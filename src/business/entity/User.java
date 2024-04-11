@@ -198,7 +198,7 @@ public class User implements Serializable, DisplayData {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập key nếu bạn là một người quản trị:");
         String key = scanner.nextLine();
-        if (key.equals("iamadmin")) {
+        if (BCrypt.checkpw(key,BCrypt.hashpw("iamadmin",BCrypt.gensalt(5)))) {
             this.role = true;
             return;
         } else {

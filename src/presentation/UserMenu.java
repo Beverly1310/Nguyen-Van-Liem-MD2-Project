@@ -57,6 +57,7 @@ public class UserMenu {
             }
         }
     }
+    //điều hướng đến trang chủ
     private static void goToMainPage(){
         boolean isStop = false;
         while (!isStop){
@@ -90,6 +91,7 @@ public class UserMenu {
             }
         }
     }
+    //điều hướng đến trang danh sách  phim
     private static void goToListPage(){
         boolean isStop = false;
         while (!isStop){
@@ -119,6 +121,7 @@ public class UserMenu {
             }
         }
     }
+    // điều hướng đến trang chi tiết phim
     private static void goToDetailPage(){
         boolean isStop = false;
         while (!isStop){
@@ -144,6 +147,7 @@ public class UserMenu {
             }
         }
     }
+    // điều hướng đến trang
     private static void goToFavoritePage(){
         boolean isStop = false;
         while (!isStop){
@@ -169,6 +173,7 @@ public class UserMenu {
             }
         }
     }
+    // điều hướng đến trang chi tiết thông tin
     private static boolean goToInfoPage(){
         boolean isStop = false;
         while (!isStop){
@@ -205,6 +210,7 @@ public class UserMenu {
         }
         return false;
     }
+    // điều hướng đến trang lịch sử xem phim
     private static void goToHistoryPage(){
         boolean isStop = false;
         while (!isStop){
