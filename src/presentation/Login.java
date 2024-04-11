@@ -95,7 +95,7 @@ public class Login {
                 AdminMenu.Menu();
             } else {
                 if (!userLogin.isStatus()) {
-                    System.out.println("\u001B[31mTài khoản của bạn đã bị khóa, vui lòng liện hệ Admin để được hỗ trợ\u001B[0m");
+                    System.out.println("\u001B[31mTài khoản của bạn đã bị khóa, vui lòng liện hệ Admin để được hỗ trợ(0943xxxxxx)\u001B[0m");
                 } else {
                     user = userLogin;
                     UserMenu.Menu();
