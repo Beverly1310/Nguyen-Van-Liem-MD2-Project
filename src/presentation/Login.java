@@ -12,12 +12,14 @@ import java.io.File;
 public class Login {
     private static IAuthentication iAuthentication = new AuthenticationImplement();
     public static User user = null;
-
+// tự động đăng nhập
     static {
         File loginStatus = new File(IOFile.LOGIN_STATUS_PATH);
-        if (!(loginStatus.length() == 0)) {
+        // nếu có một đối tượng user đã đăng nhập từ trước thì gắn user đó vào biến user
+        if (loginStatus.length() != 0) {
             user = IOFile.getUserLogin();
         }
+        // tự động đăng nhập nếu user khác null
         if (user!=null){
             {
                 if (user.isRole()) {
@@ -28,7 +30,7 @@ public class Login {
             }
         }
     }
-
+// trang chủ
     public static void main(String[] args) {
         boolean isExit = false;
         while (!isExit) {
@@ -40,15 +42,7 @@ public class Login {
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    if (user == null) {
                         login();
-                    } else {
-                        if (user.isRole()) {
-                        AdminMenu.Menu();
-                    } else {
-                        UserMenu.Menu();
-                    }
-                    }
                     break;
                 case 2:
                     register();
