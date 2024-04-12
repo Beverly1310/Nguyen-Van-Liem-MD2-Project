@@ -26,6 +26,7 @@ public class Pagination {
                     if (list.get(i) != null) {
                         list.get(i).displayData();
                     } else {
+                        list.remove(list.get(i));
                         System.err.println(alertIfNull);
                     }
                 }

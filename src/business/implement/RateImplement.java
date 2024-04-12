@@ -1,7 +1,6 @@
 package business.implement;
 
 import business.config.IOFile;
-import business.entity.Category;
 import business.entity.Rate;
 
 import java.io.File;

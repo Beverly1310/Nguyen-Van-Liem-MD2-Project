@@ -6,13 +6,12 @@ import business.config.InputMethods;
 import business.config.Pagination;
 import business.design.CategoryDesign;
 import business.entity.Category;
-import business.entity.User;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static business.implement.AuthenticationImplement.userList;
+
 import static business.implement.MovieImplement.moviesList;
 
 public class CategoryImplement implements CategoryDesign<Category> {

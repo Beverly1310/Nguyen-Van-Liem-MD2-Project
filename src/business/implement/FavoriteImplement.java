@@ -2,7 +2,6 @@ package business.implement;
 
 import business.config.IOFile;
 import business.entity.Favorite;
-import business.entity.Movies;
 
 import java.io.File;
 import java.util.ArrayList;
