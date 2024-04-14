@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryImplement {
+public class HistoryList {
     public static List<History> historyList;
     static {
         File historyFile = new File(IOFile.HISTORY_PATH);

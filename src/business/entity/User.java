@@ -1,19 +1,18 @@
 package business.entity;
 
 import business.config.InputMethods;
-import business.design.DisplayData;
+import business.design.Displayable;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
 import static business.implement.AuthenticationImplement.userList;
 
-public class User implements Serializable, DisplayData {
+public class User implements Serializable, Displayable {
     private int userId;
     private String userName;
     private String email;

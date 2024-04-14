@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteImplement {
+public class FavoriteList {
     public static List<Favorite> favoriteList;
     static {
         File favoriteFile = new File(IOFile.FAVORITE_PATH);

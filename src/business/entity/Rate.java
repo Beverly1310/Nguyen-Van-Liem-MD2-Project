@@ -1,10 +1,10 @@
 package business.entity;
 
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.io.Serializable;
 
-public class Rate implements Serializable,  DisplayData {
+public class Rate implements Serializable, Displayable {
     private int rateId;
     private int userId;
     private int rate;

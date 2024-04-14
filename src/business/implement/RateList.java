@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RateImplement {
+public class RateList {
     public static List<Rate> rateList;
 
     static {

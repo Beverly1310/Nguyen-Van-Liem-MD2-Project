@@ -1,7 +1,7 @@
 package business.entity;
 
 import business.config.InputMethods;
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import java.util.Comparator;
 import static business.implement.CategoryImplement.categoryList;
 import static business.implement.MovieImplement.moviesList;
 
-public class Movies implements Serializable, DisplayData {
+public class Movies implements Serializable, Displayable {
     private int movieId;
     private String movieName;
     private String description;

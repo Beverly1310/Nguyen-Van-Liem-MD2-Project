@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static business.implement.AuthenticationImplement.userList;
-import static business.implement.FavoriteImplement.favoriteList;
-import static business.implement.HistoryImplement.historyList;
+import static business.implement.FavoriteList.favoriteList;
+import static business.implement.HistoryList.historyList;
 import static business.implement.MovieImplement.moviesList;
-import static business.implement.RateImplement.rateList;
+import static business.implement.RateList.rateList;
 
 public class UserImplement implements UserDesign {
     ////////////////////////////////////ADMIN///////////////////////////////////////////////

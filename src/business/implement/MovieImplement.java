@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import static business.implement.FavoriteImplement.favoriteList;
-import static business.implement.HistoryImplement.historyList;
-import static business.implement.RateImplement.rateList;
+import static business.implement.FavoriteList.favoriteList;
+import static business.implement.HistoryList.historyList;
+import static business.implement.RateList.rateList;
 
 public class MovieImplement implements MovieDesign<Movies> {
     public static List<Movies> moviesList;

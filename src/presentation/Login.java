@@ -60,10 +60,10 @@ public class Login {
     }
 // đăng nhập
     private static void login() {
-        System.out.println("=================ĐĂNG NHẬP=================");
-        System.out.println("Nhập Username:");
+        System.out.println("=================LIEMFLIX=================");
+        System.out.print("Nhập Username: ");
         String username = InputMethods.getString();
-        System.out.println("Nhập Password:");
+        System.out.print("\nNhập Password: ");
         String password = InputMethods.getString();
         // kiểm tra tài khoản nhập vào
         User userLogin = iAuthentication.login(username, password);

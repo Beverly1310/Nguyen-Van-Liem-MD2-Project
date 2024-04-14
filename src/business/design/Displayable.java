@@ -1,6 +1,6 @@
 package business.design;
 
-public interface DisplayData {
+public interface Displayable {
     void displayData();
 
 }

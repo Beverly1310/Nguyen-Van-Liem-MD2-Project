@@ -1,8 +1,7 @@
 package business.entity;
 
-import business.config.InputMethods;
 import business.config.Pagination;
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,10 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 
-import static business.implement.AuthenticationImplement.userList;
-import static business.implement.HistoryImplement.historyList;
+import static business.implement.HistoryList.historyList;
 
-public class History implements Serializable, DisplayData {
+public class History implements Serializable, Displayable {
     private int historyId;
     private int userId;
     private List<Movies> movies;

@@ -1,11 +1,11 @@
 package business.config;
 
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.util.List;
 
 public class Pagination {
-    public static <E extends DisplayData> void paginate(List<E> list, String alertIfNull) {
+    public static <E extends Displayable> void paginate(List<E> list, String alertIfNull) {
         int firstIndexOfPage = 0;// chỉ số đầu của trang
         int lastIndexOfPage = 1;// chỉ số cuối của trang
         int elementPerPage = 2;// số ptu của trang

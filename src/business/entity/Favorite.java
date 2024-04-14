@@ -1,17 +1,17 @@
 package business.entity;
 
+import business.config.Alert;
 import business.config.InputMethods;
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
-import static business.implement.AuthenticationImplement.userList;
-import static business.implement.FavoriteImplement.favoriteList;
+import static business.implement.FavoriteList.favoriteList;
 import static business.implement.MovieImplement.moviesList;
 
-public class Favorite implements Serializable, DisplayData {
+public class Favorite implements Serializable, Displayable {
     private int favoriteId;
     private int userId;
     private List<Integer> movieId;
@@ -75,7 +75,8 @@ public class Favorite implements Serializable, DisplayData {
                     if (favouriteMovie != null) {
                         favouriteMovie.displayData();
                     } else {
-                        System.out.println("Phim này đã bị xóa khỏi danh sách phim, không thể hiển thị trong danh sách yêu thích");
+                        System.out.println("\u001B[31mPhim này đã bị xóa khỏi danh sách phim, không thể hiển thị trong danh sách yêu thích\u001B[0m");
+                        this.movieId.remove(this.movieId.get(i));
                     }
                 }
             }
@@ -90,7 +91,7 @@ public class Favorite implements Serializable, DisplayData {
                 System.out.println("1.Trang trước  ||  2.Trang sau");
                 System.out.println("3.Thoát");
             }
-            System.out.println("Mời nhập lựa chọn: ");
+            System.out.println(Alert.PLEASE_CHOSE);
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
@@ -110,7 +111,7 @@ public class Favorite implements Serializable, DisplayData {
                 case 3:
                     return;
                 default:
-                    System.out.println("Mời nhập lại");
+                    System.out.println(Alert.PLEASE_RE_ENTER);
                     break;
             }
         }

@@ -1,15 +1,14 @@
 package business.entity;
 
 import business.config.InputMethods;
-import business.design.DisplayData;
+import business.design.Displayable;
 
 import java.io.Serializable;
 import java.util.Comparator;
 
-import static business.implement.AuthenticationImplement.userList;
 import static business.implement.CategoryImplement.categoryList;
 
-public class Category implements Serializable, DisplayData {
+public class Category implements Serializable, Displayable {
     private int categoryId;
     private String categoryName;
     private String description;
